@@ -2,8 +2,9 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Aplicativo Flask</title>
+    <title>Atividade Avaliativa I</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
 </head>
 <body>
     <header>
@@ -11,13 +12,13 @@
     </header>
     <section>
         <form action="{{ url_for('verificar_maioridade') }}" method="get">
-            <button type="submit" class="quest">Questão - 03</button>
+            <button type="submit" class="quest">Questão TRÊS</button>
         </form>
         <form action="{{ url_for('quantos_alunos') }}" method="get">
-            <button type="submit" class="quest">Questão - 11</button>
+            <button type="submit" class="quest">Questão ONZE</button>
         </form>
         <form action="{{ url_for('login_sistema') }}" method="get">
-            <button type="submit" class="quest">Questão - 20</button>
+            <button type="submit" class="quest">Questão VINTE</button>
         </form>
     </section>
     <footer>

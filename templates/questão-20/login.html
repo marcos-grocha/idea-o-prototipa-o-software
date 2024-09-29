@@ -4,16 +4,11 @@
     <meta charset="UTF-8">
     <title>Opções de Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
 </head>
 <body>
-    <header><h2>Opções de Login</h2></header>
+    <header><h2>Validação de Senha</h2></header>
     <section>
-        <!-- <ul>
-            <li><a href="{{ url_for('pagina_cadastrar_senha') }}" class="btn">Cadastrar Senha</a></li><br>
-            <li><a href="{{ url_for('pagina_fazer_login') }}" class="btn">Fazer Login</a></li><br>
-        </ul>
-        <a href="{{ url_for('home') }}" class="btn">(  voltar  )</a> -->
-
         <form action="{{ url_for('pagina_cadastrar_senha') }}" method="get">
             <button type="submit" class="quest">Cadastrar Senha</button>
         </form>
