@@ -16,7 +16,9 @@
         {% if mensagem %}
             <p>{{ mensagem }}</p>
         {% endif %}
-        <a href="{{ url_for('login_sistema') }}" class="btn">(  voltar  )</a>
+        <form action="{{ url_for('login_sistema') }}" method="get">
+            <button type="submit">Voltar</button>
+        </form>
     </section>
     <footer>
         <p>&copy;<a href="https://www.linkedin.com/in/marcos-grocha/" target="_blank"> marcos-grocha</a></p>

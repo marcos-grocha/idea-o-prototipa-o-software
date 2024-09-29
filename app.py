@@ -78,11 +78,11 @@ def pagina_fazer_login():
     mensagem = ""
     if request.method == 'POST':
         if senha == "":
-            mensagem = "Nenhuma senha foi cadastrada, por favor cadastre uma antes de tentar fazer login"
+            mensagem = "(!) Nenhuma senha foi cadastrada...\n\n Clique em voltar para cadastrar uma senha primeiro."
         else:
             possivel_senha = request.form['senha_login']
             if senha == possivel_senha:
-                mensagem = "Sucesso ao fazer login!"
+                mensagem = "Login autenticado com SUCESSO!"
             else:
                 mensagem = "Senha inválida!"
         return render_template('questão-20/fazer_login.html', mensagem=mensagem)

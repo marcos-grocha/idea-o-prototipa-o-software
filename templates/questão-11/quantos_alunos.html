@@ -9,10 +9,13 @@
     <header><h2>Quantos alunos deseja cadastrar?</h2></header>
     <section>
         <form method="POST">
-            <label>Número de alunos:</label>
-            <input type="number" name="numero_alunos" required>
+            <input type="number" name="numero_alunos" required placeholder="número de alunos">
             <br><br>
             <button type="submit">Próximo</button>
+        </form>
+        <br>
+        <form action="{{ url_for('home') }}" method="get">
+            <button type="submit">Voltar</button>
         </form>
     </section>
     <footer>

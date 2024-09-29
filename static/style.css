@@ -40,7 +40,8 @@ footer a:hover {
 button {
     width: 73px;
     height: 25px;
-    background-color: #53aaa7;
+    /* background-color: #53aaa7; */
+    background-color: rgb(17, 125, 166);
     color: white;
     border: none;
     border-radius: 10px;
@@ -48,7 +49,12 @@ button {
     margin-right: 1px;
 }
 button:hover {
-    background-color: #2d6462;
+    /* background-color: #2d6462; */
+    background-color: darkgoldenrod;
+}
+.quest {
+    width: 178px;
+    height: 25px;
 }
 table {
     width:  400px;
@@ -59,23 +65,4 @@ table {
 td, th {
     border: 1px solid black;
     padding: 10px;
-}
-/* --- */
-a.btn {
-    width: 73px;
-    height: 25px;
-    background-color: #53aaa7;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-right: 1px;
-    /* --- */
-    text-decoration: none;
-    font-size: 14px;
-}
-a.btn:hover {
-    background-color: #2d6462;
-    /* --- */
-    text-decoration: none;
 }

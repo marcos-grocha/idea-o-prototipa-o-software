@@ -7,14 +7,18 @@
 </head>
 <body>
     <header>
-        <h1>Bem-vindo ao Aplicativo Web</h1>
+        <h1>Ideação e Prototipagem de Software</h1>
     </header>
     <section>
-        <ul>
-            <li><a href="{{ url_for('verificar_maioridade') }}" class="btn">( Questão 03 )</a></li><br>
-            <li><a href="{{ url_for('quantos_alunos') }}" class="btn">( Questão 11 )</a></li><br>
-            <li><a href="{{ url_for('login_sistema') }}" class="btn">( Questão 20 )</a></li><br>
-        </ul>
+        <form action="{{ url_for('verificar_maioridade') }}" method="get">
+            <button type="submit" class="quest">Questão - 03</button>
+        </form>
+        <form action="{{ url_for('quantos_alunos') }}" method="get">
+            <button type="submit" class="quest">Questão - 11</button>
+        </form>
+        <form action="{{ url_for('login_sistema') }}" method="get">
+            <button type="submit" class="quest">Questão - 20</button>
+        </form>
     </section>
     <footer>
         <p>&copy;<a href="https://www.linkedin.com/in/marcos-grocha/" target="_blank"> marcos-grocha</a></p>
