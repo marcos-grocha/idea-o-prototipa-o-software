@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Alunos Cadastrados</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header><h2>Alunos Cadastrados</h2></header>
+    <section>
+        <h3>Cadastros:</h3>
+        <ul>
+            {% for nome, dados in cadastro.items() %}
+                <li><strong>{{ nome }}</strong>: Idade: <strong>{{ dados.Idade }}</strong>, Nota: <strong>{{ dados.Nota }}</strong></li><br>
+            {% endfor %}
+        </ul>
+        <br>
+        <a href="{{ url_for('home') }}" class="btn">( Voltar ao Menu )</a>
+    </section>
+    <footer>
+        <p>&copy;<a href="https://www.linkedin.com/in/marcos-grocha/" target="_blank"> marcos-grocha</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de Alunos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header><h2>Cadastro de Alunos</h2></header>
+    <section>
+        <form method="POST">
+            {% for i in range(num_alunos) %}
+                <h3>Aluno {{ i + 1 }}:</h3>
+                <label>Nome:</label>
+                <input type="text" name="nome {{ i }}" required>
+                <br>
+                <label>Idade:</label>
+                <input type="number" name="idade {{ i }}" required>
+                <br>
+                <label>Nota:</label>
+                <input type="text" name="nota {{ i }}" required>
+                <br><br>
+            {% endfor %}
+            <button type="submit">Cadastrar</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy;<a href="https://www.linkedin.com/in/marcos-grocha/" target="_blank"> marcos-grocha</a></p>
+    </footer>
+</body>
+</html>

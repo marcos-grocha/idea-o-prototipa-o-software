@@ -21,10 +21,10 @@
             <button type="submit">Cadastrar</button>
         </form>
         {% if cadastro %}
-            <h3>Alunos cadastrados:</h3>
+            <h3>Cadastros:</h3>
             <ul>
                 {% for nome, dados in cadastro.items() %}
-                    <li>{{ nome }} - Idade: {{ dados.Idade }} - Nota: {{ dados.Nota }}</li>
+                    <li><strong>{{ nome }}</strong>: Idade: <strong>{{ dados.Idade }}</strong>, Nota: <strong>{{ dados.Nota }}</strong></li>
                 {% endfor %}
             </ul>
         {% endif %}
