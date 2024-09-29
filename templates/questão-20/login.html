@@ -2,26 +2,16 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Sistema de Login</title>
+    <title>Opções de Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <header><h2>Sistema de Login</h2></header>
+    <header><h2>Opções de Login</h2></header>
     <section>
-        <form method="POST">
-            <label>1. Cadastrar Senha:</label><br>
-            <input type="password" name="senha_escolhida" placeholder="Digite sua senha">
-            <input type="password" name="senha_confirmada" placeholder="Confirme sua senha">
-            <button type="submit" name="opcao" value="1">Cadastrar</button>
-            <br><br>
-            <label>2. Fazer Login:</label><br>
-            <input type="password" name="senha_login" placeholder="Digite sua senha">
-            <button type="submit" name="opcao" value="2">Login</button>
-        </form>
-        {% if mensagem %}
-            <p>{{ mensagem }}</p>
-        {% endif %}
-        <br>
+        <ul>
+            <li><a href="{{ url_for('pagina_cadastrar_senha') }}" class="btn">Cadastrar Senha</a></li><br>
+            <li><a href="{{ url_for('pagina_fazer_login') }}" class="btn">Fazer Login</a></li><br>
+        </ul>
         <a href="{{ url_for('home') }}" class="btn">(  voltar  )</a>
     </section>
     <footer>

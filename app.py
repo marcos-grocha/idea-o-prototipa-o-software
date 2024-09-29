@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 
 app = Flask(__name__)
 app.secret_key = 'chave-secreta'  # Necessário para usar a sessão
+app.secret_key = 'some_secret_key'  # Necessário para usar flash
 
 # Função para verificar maioridade
 @app.route('/maioridade', methods=['GET', 'POST'])
@@ -47,29 +48,45 @@ def exibir_cadastro():
     return render_template('questão-11/exibir_cadastro.html', cadastro=cadastro)
 
 # Funções para sistema de login
+# Variável global para armazenar a senha
 senha = ""
-
-@app.route('/login', methods=['GET', 'POST'])
+# Página inicial com opções
+@app.route('/login')
 def login_sistema():
+    return render_template('questão-20/login.html')
+
+# Página para cadastrar senha
+@app.route('/cadastrar_senha', methods=['GET', 'POST'])
+def pagina_cadastrar_senha():
     global senha
     mensagem = ""
     if request.method == 'POST':
-        opcao = request.form['opcao']
-        if opcao == "1":
-            senha_escolhida = request.form['senha_escolhida']
-            senha_confirmada = request.form['senha_confirmada']
-            if senha_escolhida == senha_confirmada:
-                senha = senha_escolhida
-                mensagem = "Senha cadastrada com sucesso!"
-            else:
-                mensagem = "Senhas não coincidem!"
-        elif opcao == "2":
+        senha_escolhida = request.form['senha_escolhida']
+        senha_confirmada = request.form['senha_confirmada']
+        if senha_escolhida == senha_confirmada:
+            senha = senha_escolhida
+            mensagem = "Senha cadastrada com sucesso!"
+        else:
+            mensagem = "Senhas não coincidem!"
+        return render_template('questão-20/cadastrar_senha.html', mensagem=mensagem)
+    return render_template('questão-20/cadastrar_senha.html')
+
+# Página para fazer login
+@app.route('/fazer_login', methods=['GET', 'POST'])
+def pagina_fazer_login():
+    global senha
+    mensagem = ""
+    if request.method == 'POST':
+        if senha == "":
+            mensagem = "Nenhuma senha foi cadastrada, por favor cadastre uma antes de tentar fazer login"
+        else:
             possivel_senha = request.form['senha_login']
             if senha == possivel_senha:
                 mensagem = "Sucesso ao fazer login!"
             else:
                 mensagem = "Senha inválida!"
-    return render_template('questão-20/login.html', mensagem=mensagem)
+        return render_template('questão-20/fazer_login.html', mensagem=mensagem)
+    return render_template('questão-20/fazer_login.html')
 
 @app.route('/')
 def home():
