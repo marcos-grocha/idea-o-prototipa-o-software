@@ -1,8 +1,65 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
+import random
+import string
 
 app = Flask(__name__)
 app.secret_key = 'chave-secreta'  # Necessário para usar a sessão
 app.secret_key = 'some_secret_key'  # Necessário para usar flash
+
+# Dicionário global para o sistema bancário
+usuarios = {}
+
+# Questão 1: Sistema Bancário
+@app.route('/banco', methods=['GET', 'POST'])
+def sistema_bancario():
+    mensagem = ""
+    if request.method == 'POST':
+        usuario = request.form['usuario']
+        operacao = request.form['operacao']
+        valor = float(request.form['valor']) if request.form.get('valor') else 0
+
+        if usuario not in usuarios:
+            usuarios[usuario] = 0  # Criando conta para o usuário automaticamente
+
+        if operacao == 'depositar':
+            usuarios[usuario] += valor
+            mensagem = f"Depósito de R$ {valor:.2f} realizado com sucesso!"
+        elif operacao == 'sacar':
+            if usuarios[usuario] >= valor:
+                usuarios[usuario] -= valor
+                mensagem = f"Saque de R$ {valor:.2f} realizado com sucesso!"
+            else:
+                mensagem = "Saldo insuficiente para saque."
+        elif operacao == 'saldo':
+            mensagem = f"Saldo de {usuario}: R$ {usuarios[usuario]:.2f}"
+
+    return render_template('me-questão-03/sistema_bancario.html', mensagem=mensagem, usuarios=usuarios)
+
+# Questão 2: Gerador de Senhas Aleatórias
+@app.route('/gerar_senha', methods=['GET', 'POST'])
+def gerar_senha():
+    senha_gerada = ""
+    if request.method == 'POST':
+        tamanho = int(request.form['tamanho'])
+        incluir_maiusculas = 'maiusculas' in request.form
+        incluir_minusculas = 'minusculas' in request.form
+        incluir_numeros = 'numeros' in request.form
+        incluir_especiais = 'especiais' in request.form
+
+        caracteres = ""
+        if incluir_maiusculas:
+            caracteres += string.ascii_uppercase
+        if incluir_minusculas:
+            caracteres += string.ascii_lowercase
+        if incluir_numeros:
+            caracteres += string.digits
+        if incluir_especiais:
+            caracteres += string.punctuation
+
+        if caracteres:
+            senha_gerada = ''.join(random.choice(caracteres) for _ in range(tamanho))
+
+    return render_template('me-questão-05/gerador_senha.html', senha=senha_gerada)
 
 # Função para verificar maioridade
 @app.route('/maioridade', methods=['GET', 'POST'])

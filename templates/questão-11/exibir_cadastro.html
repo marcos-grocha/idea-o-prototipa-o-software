@@ -12,7 +12,9 @@
         <h3>Cadastros:</h3>
         <ul>
             {% for nome, dados in cadastro.items() %}
-                <li><strong>{{ nome }}</strong>: Idade: <strong>{{ dados.Idade }}</strong>, Nota: <strong>{{ dados.Nota }}</strong></li><br>
+                <li><strong>{{ nome }}</strong></li>
+                <li>Idade: <strong>{{ dados.Idade }}</strong></li>
+                <li> Nota: <strong>{{ dados.Nota }}</strong></li><br>
             {% endfor %}
         </ul>
         <br>

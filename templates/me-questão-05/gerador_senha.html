@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de Senhas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
+</head>
+<body>
+    <header><h2>Gerador de Senhas Aleatórias</h2></header>
+    <section>
+        <form method="POST">
+            <label for="tamanho">Tamanho da senha:</label><br>
+            <input type="number" name="tamanho" min="4" required><br><br>
+            <label for="opcoes">Critérios:</label><br>
+            <input type="checkbox" name="maiusculas"> Incluir letras maiúsculas<br>
+            <input type="checkbox" name="minusculas"> Incluir letras minúsculas<br>
+            <input type="checkbox" name="numeros"> Incluir números<br>
+            <input type="checkbox" name="especiais"> Incluir caracteres especiais<br><br>
+            <button type="submit" class="me">Gerar Senha</button>
+        </form>
+        {% if senha %}
+            <p><strong>Senha Gerada:</strong> {{ senha }}</p>
+        {% endif %}
+        <form action="{{ url_for('home') }}" method="get">
+            <br><button type="submit" class="me">Voltar</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy;<a href="https://www.linkedin.com/in/marcos-grocha/" target="_blank"> marcos-grocha</a></p>
+    </footer>
+</body>
+</html>

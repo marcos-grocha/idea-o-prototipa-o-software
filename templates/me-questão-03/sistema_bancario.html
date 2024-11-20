@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema Bancário</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='favicon.png') }}" type="image/x-icon">
+</head>
+<body>
+    <header><h1>Simulador de Sistema Bancário</h1></header>
+    <section>
+        <form method="POST">
+            <label for="usuario">Nome do usuário:</label><br>
+            <input type="text" name="usuario" required><br><br>
+            <label for="operacao">Operação:</label><br>
+            <select name="operacao" required>
+                <option value="depositar">Depositar</option>
+                <option value="sacar">Sacar</option>
+                <option value="saldo">Consultar Saldo</option>
+            </select><br><br>
+            <label for="valor">Valor (somente para depósito/saque):</label><br>
+            <input type="number" name="valor" step="0.01"><br><br>
+            <button type="submit" class="me">Realizar Operação</button>
+        </form>
+        {% if mensagem %}
+            <p><strong>{{ mensagem }}</strong></p>
+        {% endif %}
+        <form action="{{ url_for('home') }}" method="get">
+            <br><button type="submit" class="me">Voltar</button>
+        </form>
+    </section>
+    <footer>
+        <p>&copy;<a href="https://www.linkedin.com/in/marcos-grocha/" target="_blank"> marcos-grocha</a></p>
+    </footer>
+</body>
+</html>
